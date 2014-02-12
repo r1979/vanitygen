@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Vanitygen by r1979</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Vanitygen</h1>
+        <p>Altcoin friendly version of Vanitygen</p>
+
+        <p class="view"><a href="https://github.com/r1979/vanitygen">View the Project on GitHub <small>r1979/vanitygen</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/r1979/vanitygen/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/r1979/vanitygen/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/r1979/vanitygen">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="vanitygen-nr1" class="anchor" href="#vanitygen-nr1"><span class="octicon octicon-link"></span></a>Vanitygen-nr1</h1>
+
+<p>Vanitygen-nr1 aims to be a user-friendly altcoin oriented version of the original vanitygen.</p>
+
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<p>0.22.2 - Added support for Spice Melange</p>
+
+<p>0.22.1 - Added support for Unobtanium</p>
+
+<h2>
+<a name="build-instructions" class="anchor" href="#build-instructions"><span class="octicon octicon-link"></span></a>Build instructions</h2>
+
+<h3>
+<a name="linux" class="anchor" href="#linux"><span class="octicon octicon-link"></span></a>Linux</h3>
+
+<ol>
+<li><p>git clone <a href="https://github.com/r1979/vanitygen.git">https://github.com/r1979/vanitygen.git</a></p></li>
+<li><p>cd vanitygen</p></li>
+<li><p>make -f Makefile</p></li>
+</ol><h2>
+<a name="troubleshooting" class="anchor" href="#troubleshooting"><span class="octicon octicon-link"></span></a>Troubleshooting</h2>
+
+<p>If you get "Error adding key to wallet (code -4)" when adding a new private key to your wallet, probably your wallet is encrypted.
+Temoporarily unlock your wallet using the wallet console command "walletpassphrase ".
+Then, while the wallet is still unlocked issue the command "importprivkey  [label] [rescan=true]".</p>
+
+<h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>This repository is a fork from <a href="https://github.com/samr7/vanitygen">https://github.com/samr7/vanitygen</a>.</p>
+
+<h3>
+<a name="original-readme" class="anchor" href="#original-readme"><span class="octicon octicon-link"></span></a>Original README</h3>
+
+<p>I'd like to present a standalone command line vanity address generator 
+called vanitygen.</p>
+
+<p>There are plenty of quality tools to do this right now already.  So why 
+use vanitygen?  The main reason is that it is fast, more than an order 
+of magnitude faster than the official bitcoin client with the vanity 
+address patch applied.  This is despite the fact that it runs on the 
+CPU and does not use OpenCL or CUDA.  Vanitygen is also a bit more 
+user-friendly in that it provides feedback on its rate of progress and 
+how many keys it has checked.</p>
+
+<p>Vanitygen is written in C, and is provided in source code form and 
+pre-built Win32 binaries.  At present, vanitygen can be built on Linux, 
+and requires the openssl and pcre libraries.</p>
+
+<p>Vanitygen can generate regular bitcoin addresses, namecoin addresses, 
+and testnet addresses.</p>
+
+<p>Vanitygen can search for exact prefixes or regular expression matches.<br>
+When searching for exact prefixes, vanitygen will ensure that the 
+prefix is possible, will provide a difficulty estimate, and will run 
+about 30% faster.  Exact prefixes are case-sensitive by default, but 
+may be searched case-insensitively using the "-i" option.  Regular 
+expression patterns follow the Perl-compatible regular expression 
+language.</p>
+
+<p>Vanitygen can accept a list of patterns to search for, either on the 
+command line, or from a file or stdin using the "-f" option.  File 
+sources should have one pattern per line.  When searching for N exact 
+prefixes, performance of O(logN) can be expected, and extremely long 
+lists of prefixes will have little effect on search rate.  Searching 
+for N regular expressions will have varied performance depending on the 
+complexity of the expressions, but O(N) performance can be expected.</p>
+
+<p>By default, vanitygen will spawn one worker thread for each CPU in your 
+system.  If you wish to limit the number of worker threads created by 
+vanitygen, use the "-t" option.</p>
+
+<p>The example below completed quicker than average, and took about 45 sec 
+to finish, using both cores of my aging Core 2 Duo E6600:</p>
+
+<p>$ ./vanitygen 1Love
+Difficulty: 4476342
+[48165 K/s][total 2080000][Prob 37.2%][50% in 21.2s]<br>
+Pattern: 1Love
+Address: 1LoveRg5t2NCDLUZh6Q8ixv74M5YGVxXaN
+Privkey: 5JLUmjZiirgziDmWmNprPsNx8DYwfecUNk1FQXmDPaoKB36fX1o</p>
+
+<p>Currently, it is difficult to import the private key into bitcoin.<br>
+Sipa's showwallet branch has a new command called "importprivkey" that 
+accepts the base-58 encoded private key.  Vanitygen has been tested to 
+work with that version of bitcoin.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/r1979">r1979</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
