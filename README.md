@@ -1,3 +1,28 @@
+# Vanitygen-nr1
+Vanitygen-nr1 aims to be a user-friendly altcoin oriented version of the original vanitygen.
+
+## Changelog
+0.22.1 - Added support for Unobtanium
+
+0.22.2 - Added support for Spice Melange
+
+## Build instructions
+### Linux
+1. git clone https://github.com/r1979/vanitygen.git
+
+1. cd vanitygen
+
+1. make -f Makefile
+
+## Troubleshooting
+If you get "Error adding key to wallet (code -4)" when adding a new private key to your wallet, probably your wallet is encrypted.
+Temoporarily unlock your wallet using the wallet console command "walletpassphrase <passphrase> <timeout>".
+Then, while the wallet is still unlocked issue the command "importprivkey <unobtaniumprivkey> [label] [rescan=true]".
+
+## Credits
+This repository is a fork from https://github.com/WyseNynja/vanitygen.
+
+### Original README
 I'd like to present a standalone command line vanity address generator 
 called vanitygen.
 
@@ -50,4 +75,3 @@ Currently, it is difficult to import the private key into bitcoin.
 Sipa's showwallet branch has a new command called "importprivkey" that 
 accepts the base-58 encoded private key.  Vanitygen has been tested to 
 work with that version of bitcoin.
-
