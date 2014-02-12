@@ -313,6 +313,7 @@ usage(const char *name)
 "-1            Stop after first match\n"
 "-N            Generate namecoin address\n"
 "-T            Generate bitcoin testnet address\n"
+"-U            Generate unobtanium address\n"
 "-X <version>  Generate address with the given version\n"
 "-F <format>   Generate address with the given format (pubkey or script)\n"
 "-P <pubkey>   Specify base public key for piecewise key generation\n"
@@ -361,7 +362,7 @@ main(int argc, char **argv)
 
 	int i;
 
-	while ((opt = getopt(argc, argv, "vqnrik1eE:P:NTX:F:t:h?f:o:s:")) != -1) {
+	while ((opt = getopt(argc, argv, "vqnrik1eE:P:NTUX:F:t:h?f:o:s:")) != -1) {
 		switch (opt) {
 		case 'v':
 			verbose = 2;
@@ -381,24 +382,29 @@ main(int argc, char **argv)
 		case 'k':
 			remove_on_match = 0;
 			break;
-		case '1':
-			only_one = 1;
-			break;
-		case 'N':
-			addrtype = 52;
-			privtype = 180;
-			scriptaddrtype = -1;
-			break;
-		case 'T':
-			addrtype = 111;
-			privtype = 239;
-			scriptaddrtype = 196;
-			break;
-		case 'X':
-			addrtype = atoi(optarg);
-			privtype = 128 + addrtype;
-			scriptaddrtype = addrtype;
-			break;
+                case '1':
+                        only_one = 1;
+                        break;
+                case 'N':
+                        addrtype = 52;
+                        privtype = 180;
+                        scriptaddrtype = -1;
+                        break;
+                case 'T':
+                        addrtype = 111;
+                        privtype = 239;
+                        scriptaddrtype = 196;
+                        break;
+                case 'U':
+                        addrtype = 130;
+                        privtype = 224;
+                        scriptaddrtype = 30;
+                        break;
+                case 'X':
+                        addrtype = atoi(optarg);
+                        privtype = 128 + addrtype;
+                        scriptaddrtype = addrtype;
+                        break;
 		case 'F':
 			if (!strcmp(optarg, "script"))
 				format = VCF_SCRIPT;
